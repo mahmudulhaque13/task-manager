@@ -1,15 +1,25 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-<BrowserRouter>
-  <Routes>
-    <Route path="/" element={<Home />} />
+import Home from "./pages/Home";
+import Tasks from "./pages/Tasks";
+import TaskDetails from "./pages/TaskDetails";
+import Completed from "./pages/Completed";
+import NotFound from "./pages/NotFound";
 
-    <Route path="/tasks" element={<Tasks />} />
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
 
-    <Route path="/tasks/:id" element={<TaskDetails />} />
+        <Route path="/tasks" element={<Tasks />} />
 
-    <Route path="/completed" element={<Completed />} />
+        <Route path="/tasks/:id" element={<TaskDetails />} />
 
-    <Route path="*" element={<NotFound />} />
-  </Routes>
-</BrowserRouter>;
+        <Route path="/completed" element={<Completed />} />
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
