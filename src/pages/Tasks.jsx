@@ -14,6 +14,12 @@ function handleAdd() {
   setTitle("");
 }
 
+function deleteTask(id) {
+  const updated = tasks.filter((t) => t.id !== id);
+
+  setTasks(updated);
+}
+
 function Tasks() {
   return (
     <div>
@@ -33,6 +39,7 @@ function Tasks() {
           <Link to={`/tasks/${task.id}`}>View Details</Link>
         </div>
       ))}
+      <button onClick={() => deleteTask(task.id)}>Delete</button>
     </div>
   );
 }
