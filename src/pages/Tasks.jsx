@@ -14,6 +14,14 @@ function handleAdd() {
   setTitle("");
 }
 
+function toggleComplete(id) {
+  const updated = tasks.map((t) =>
+    t.id === id ? { ...t, completed: !t.completed } : t,
+  );
+
+  setTasks(updated);
+}
+
 function deleteTask(id) {
   const updated = tasks.filter((t) => t.id !== id);
 
@@ -39,6 +47,7 @@ function Tasks() {
           <Link to={`/tasks/${task.id}`}>View Details</Link>
         </div>
       ))}
+      <button onClick={() => toggleComplete(task.id)}>Complete</button>
       <button onClick={() => deleteTask(task.id)}>Delete</button>
     </div>
   );
