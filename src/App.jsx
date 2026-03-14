@@ -7,6 +7,11 @@ import Completed from "./pages/Completed";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 
+import { useState } from "react";
+import tasksData from "./data/tasks";
+
+const [tasks, setTasks] = useState(tasksData);
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -14,7 +19,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/tasks" element={<Tasks tasks={tasks} />} />
 
         <Route path="/tasks/:id" element={<TaskDetails />} />
 
