@@ -1,6 +1,4 @@
-import tasks from "../data/tasks";
-
-function Completed() {
+function Completed({ tasks }) {
   const completedTasks = tasks.filter((t) => t.completed);
 
   return (
