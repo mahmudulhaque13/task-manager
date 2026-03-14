@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
-import tasks from "../data/tasks";
 
-function TaskDetails() {
+function TaskDetails({ tasks }) {
   const { id } = useParams();
 
   const task = tasks.find((t) => t.id === Number(id));
@@ -13,7 +12,11 @@ function TaskDetails() {
   return (
     <div>
       <h2>{task.title}</h2>
-      <p>Status: {task.completed ? "Done" : "Pending"}</p>
+
+      <p>
+        Status:
+        {task.completed ? "Completed" : "Pending"}
+      </p>
     </div>
   );
 }
