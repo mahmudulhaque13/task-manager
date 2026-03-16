@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Navbar from "./components/Navbar";
 
@@ -9,14 +9,26 @@ import TaskDetails from "./pages/TaskDetails";
 import Completed from "./pages/Completed";
 import NotFound from "./pages/NotFound";
 
-import tasksData from "./data/tasks";
-
 function App() {
-  const [tasks, setTasks] = useState(tasksData);
+  const [tasks, setTasks] = useState([]);
+
+  // load tasks
+  useEffect(() => {
+    const saved = JSON.parse(localStorage.getItem("tasks"));
+
+    if (saved) {
+      setTasks(saved);
+    }
+  }, []);
+
+  // save tasks
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   return (
     <BrowserRouter>
-      <Navbar />
+      <Navbar tasks={tasks} />
 
       <Routes>
         <Route path="/" element={<Home />} />
