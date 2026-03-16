@@ -1,5 +1,6 @@
 function Completed({ tasks }) {
   const completedTasks = tasks.filter((t) => t.completed);
+  const completedCount = tasks.filter((t) => t.completed).length;
 
   return (
     <div>
@@ -8,6 +9,7 @@ function Completed({ tasks }) {
       {completedTasks.map((t) => (
         <p key={t.id}>{t.title}</p>
       ))}
+      <p>Completed: {completedCount}</p>
     </div>
   );
 }
